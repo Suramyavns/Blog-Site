@@ -1,0 +1,21 @@
+{% extends "base_layout.html" %}
+
+{% block content %}
+
+<div class="index-btns">
+    
+        <a href="{% url 'blogs' %}">
+            <button class="buttons">
+                See Blog Posts
+            </button>
+        </a>
+    
+    
+        <a href="{% url 'createblog' %}">
+            <button class="buttons">
+                Create a blog
+            </button>
+        </a>
+</div>
+
+{% endblock %}

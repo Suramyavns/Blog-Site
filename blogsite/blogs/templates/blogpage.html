@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div class="blogpage">
+    <div class="heading">
+        <h2 id="blogtitle">{{blogpost.title}}</h2>
+    </div>
+    <div class="blogcontent">
+        <p id="blogbody">{{blogpost.body}}</p>
+        <p id="blogdate">{{blogpost.date}}</p>
+    </div>
+    <div class="index-btns">
+        <a href="{% url 'updateblog' blogpost.id %}"><button class="buttons">Update blog</button></a>
+        <a href="{% url 'deleteblog' blogpost.id %}"><button class="buttons">Delete</button></a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link rel="stylesheet" href="{% static 'styling/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'media/favicon.png' %}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Playfair+Display:ital@1&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        .forms>input,.login-btn{
+            background-color: rgba(24, 22, 22, 0.782);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 10px;
+        }
+        .login-btn{
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: rgb(194, 190, 190);
+        }
+        .header>div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header" style="position: fixed; top: 0px;">
+        <div>
+            <a href="{% url 'index' %}" id="header">Blog Site</a>
+        </div>
+        <form action="{% url 'blogs' %}" method="get" class="forms" style="display: flex; justify-content: center; align-items: center;">
+            <input type="text" name="q" placeholder="Search Blogs by topic, name or body part..." style="width: 25vw;">
+        </form>
+        <div style="margin: 0px 20px;">
+            {% if request.user.is_authenticated %}
+            <button class="login-btn">
+                <a href="{% url 'logoutuser' %}">Logout</a>
+            </button>
+            {% else %}
+            <button class="login-btn">
+                <a href="{% url 'loginpage' %}">Login</a>
+            </button>
+            {% endif %}
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+
+    <div class="footer" style="position: fixed; bottom: 0px;">
+        <p id="header">
+            All rights reserved. Created by Suramya Didwania.
+        </p>
+    </div>
+</body>
+</html>
