@@ -17,6 +17,8 @@ class blog(models.Model):
     date = models.DateTimeField(default=timezone.now)
     thumb = models.ImageField(upload_to="thumbnails",blank=True)
     topicname = models.ForeignKey(topic,on_delete=models.SET_NULL,null=True)
+    def __str__(self):
+        return self.slug
     def bodypart(self):
         return self.body[:50]
 
