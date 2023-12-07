@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.db.models import Q
 from .models import blog,topic,User
-from .forms import blogform
+from .forms import blogform,topicform
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
@@ -31,7 +31,9 @@ def createblog(request):
     if request.method == 'POST':
         blog = blogform(request.POST)
         if blog.is_valid():
-            blog.save()
+            obj = blog.save(commit=False)
+            obj.slug = blog.data['title'].replace(' ','-')
+            obj.save()
             return redirect('index')
     return render(request,'addblog.html',{'form':blogform})
 
@@ -71,3 +73,11 @@ def loginpage(request):
 def logoutuser(request):
     logout(request)
     return redirect('index')
+
+def addtopic(request):
+    if request.method=='POST':
+        topic = topicform(request.POST)
+        if topic.is_valid():
+            topic.save()
+            return redirect('index')
+    return render(request,'addtopic.html',{'topicform':topicform})

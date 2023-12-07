@@ -11,7 +11,8 @@ urlpatterns = [
     path('updateblog/<int:id>',views.updateblog,name='updateblog'),
     path('delete/<int:id>',views.deleteblog,name='deleteblog'),
     path('login',views.loginpage,name='loginpage'),
-    path('logout',views.logoutuser,name='logoutuser')
+    path('logout',views.logoutuser,name='logoutuser'),
+    path('addtopic',views.addtopic,name='addtopic')
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

@@ -1,4 +1,5 @@
 from django.forms import modelform_factory
-from .models import blog
+from .models import blog,topic
 
-blogform = modelform_factory(blog,fields=['title','slug','body','date'])
+topicform = modelform_factory(topic,fields=['topicname'])
+blogform = modelform_factory(blog,fields=['title','body','date','topicname','thumb'])

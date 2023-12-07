@@ -1,12 +1,11 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-
 <div style="position: absolute; top: 50px;">
     <form action="" method="post">
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Submit">
+        {{ topicform.as_p }}
+        <input type="submit" value="Add topic">
     </form>
 </div>
 {% endblock %}
