@@ -84,11 +84,12 @@ a{
 }
 
 .posts{
-    position: relative;
-    top: 10vh;
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 10px;
+    padding-top: 10vh;
+    position: relative;
+    margin-left: 20vw;
 }
 .blog-post{
     background-color: rgb(36, 34, 34);
@@ -162,17 +163,20 @@ a{
 .bloglist{
     display: grid;
     grid-template-columns: 1.5fr 7.5fr;
-    column-gap: 10px;    
+    column-gap: 10px;
+    margin-bottom: 20px;
 }
 
 .browse{
     margin-right: 20px;
-    position: relative;
+    position: fixed;
     top: 75px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    left: 5vw;
+    width: 10vw;
 }
 
 .login-form{

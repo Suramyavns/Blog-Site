@@ -17,7 +17,7 @@
         </p>
         <ul style="
             position: absolute;
-            top: 60px;
+            top: 85px;
             font-family: 'Roboto',sans-serif;
         ">
             <li>
@@ -41,6 +41,7 @@
             <a href="{% url 'blogpage' blog.slug %}">
             <h2 class="blog-post-title" style="font-family: Merryweather;">{{ blog.title }}</h2>
             </a>
+            <p>By {{ blog.author }}</p>
             <p style="font-family: sans-serif;">{{blog.bodypart}}...</p>
             <p style="font-family: playfair display;">Date: {{blog.date}}</p>
         </div>

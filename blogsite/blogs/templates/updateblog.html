@@ -2,10 +2,11 @@
 
 {% block content %}
 
+<div style="position: absolute; top: 50px;">
 <form action="" method="post">
     {% csrf_token%}
     {{form.as_p}}
     <input type="submit" value="Submit">
 </form>
-
+</div>
 {% endblock %}

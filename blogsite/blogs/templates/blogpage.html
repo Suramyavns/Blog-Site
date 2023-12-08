@@ -11,8 +11,14 @@
         <p id="blogdate">{{blogpost.date}}</p>
     </div>
     <div class="index-btns">
-        <a href="{% url 'updateblog' blogpost.id %}"><button class="buttons">Update blog</button></a>
-        <a href="{% url 'deleteblog' blogpost.id %}"><button class="buttons">Delete</button></a>
+        <form action="{% url 'updateblog' blogpost.id }" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Update Blog">
+        </form>
+        <form action="{% url 'deleteblog' blogpost.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>
     </div>
 </div>
 {% endblock %}
