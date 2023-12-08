@@ -11,7 +11,7 @@
         <p id="blogdate">{{blogpost.date}}</p>
     </div>
     <div class="index-btns">
-        <form action="{% url 'updateblog' blogpost.id }" method="post">
+        <form action="{% url 'updateblog' blogpost.id %}" method="post">
             {% csrf_token %}
             <input type="submit" value="Update Blog">
         </form>
