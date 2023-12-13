@@ -13,7 +13,8 @@ urlpatterns = [
     path('login',views.loginpage,name='loginpage'),
     path('logout',views.logoutuser,name='logoutuser'),
     path('addtopic',views.addtopic,name='addtopic'),
-    path('register',views.register,name='registration')
+    path('register',views.register,name='registration'),
+    path('profile/<str:pk>',views.profile,name='profile')
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 # Create your models here.
 
+    
 
 class topic(models.Model):
     topicname = models.CharField(max_length=20)
@@ -17,7 +18,7 @@ class blog(models.Model):
     date = models.DateTimeField(default=timezone.now)
     thumb = models.ImageField(upload_to="thumbnails",blank=True)
     topicname = models.ForeignKey(topic,on_delete=models.SET_NULL,null=True)
-    author = models.TextField(blank=False,default='admin')
+    author = models.ForeignKey(User,on_delete=models.CASCADE)
     def __str__(self):
         return self.slug
     def bodypart(self):

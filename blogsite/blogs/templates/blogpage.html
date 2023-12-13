@@ -8,7 +8,12 @@
     </div>
     <div class="blogcontent">
         <p id="blogbody">{{blogpost.body}}</p>
-        <p id="blogdate">{{blogpost.date}}</p>
+        <p id="blogdate">
+            Authored by 
+            <a href="{% url 'profile' blogpost.author.id %}" class="author-name">
+                {{blogpost.author}}
+            </a>
+            on {{blogpost.date}}</p>
     </div>
     <div class="index-btns">
         <form action="{% url 'updateblog' blogpost.id %}" method="post">

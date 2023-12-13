@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime as dt
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -47,7 +48,7 @@ def updateblog(request, id):
     blogpost = blog.objects.get(id=id)
     form = blogform(instance=blogpost)
 
-    if(blogpost.author!=request.user.username):
+    if(blogpost.author!=request.user):
         return HttpResponse("You're not allowed to be here!")
 
     if(request.method=='POST'):
@@ -60,7 +61,7 @@ def updateblog(request, id):
 @login_required(login_url='/login')
 def deleteblog(request,id):
     blogpost = blog.objects.get(id=id)
-    if(blogpost.author!=request.user.username):
+    if(blogpost.author!=request.user):
         return HttpResponse("You're not allowed to be here!")
     if request.method=='POST':
         blogpost.delete()
@@ -108,3 +109,9 @@ def addtopic(request):
             topic.save()
             return redirect('index')
     return render(request,'addtopic.html',{'topicform':topicform})
+
+def profile(request,pk):
+    user = User.objects.get(id=pk)
+    blogs = blog.objects.filter(author__username=user.username)
+    context = {'user':user,'blogs':blogs}
+    return render(request,'profile.html',context)
